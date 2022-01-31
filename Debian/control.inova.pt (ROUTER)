@@ -1,1 +1,25 @@
-
+ ROUTER
+ 
+ No router será onde toda a informação entra e sai da minha rede privada!
+ Para começar, irei configurar o NAT para o DMZ e para as restantes maquinas da rede privada.
+ 
+ > AWS: Actions > Networking > Change source/destination checking > STOP (This will allow NAT)
+ > sudo hostnamectl set-hostname control.inova.pt (Server Domain)
+ > nano keypair.pem (Inside paste your private key that you used to connect to the machine)
+ > sudo chmod 400 keypair.pem (Give Permissions to the key file)
+ 
+ > sudo su - (Root user)
+ > apt update && apt upgrade -y (Update system)
+ 
+ > apt install netfilter-persistant iptables-persistant
+ > iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+ > iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 80,443 -j DNAT --to-destination 172.31.128.101 (Redirects the HTTP/HTTPS Traffic to DMZ) 
+ > iptables -t nat -L -nv (Check)
+ > netfilter-persistant save (Save Configurations)
+ > nano /etc/sysctl.conf
+   > Uncomment # net.ipv4.ip_forward=1
+ > sysctl -p (If the awnser is 1, then your good to go)
+ > ip a (Copy MAC Address from your eth2, thats the 2 network interface that you attached to your router.)
+ > nano /etc/netplan/50-cloud-init.yaml
+   > Copy eth1 block;
+   ![alt text](https://i.imgur.com/qszByY4.png)
