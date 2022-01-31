@@ -1,25 +1,50 @@
- ROUTER
+ 『 ROUTER 』
  
- No router será onde toda a informação entra e sai da minha rede privada!
- Para começar, irei configurar o NAT para o DMZ e para as restantes maquinas da rede privada.
+ 《 𝙊𝙣 𝙩𝙝𝙚 𝙧𝙤𝙪𝙩𝙚𝙧 𝙬𝙞𝙡𝙡 𝙗𝙚 𝙬𝙝𝙚𝙧𝙚 𝙖𝙡𝙡 𝙩𝙝𝙚 𝙞𝙣𝙛𝙤𝙧𝙢𝙖𝙩𝙞𝙤𝙣 𝙚𝙣𝙩𝙚𝙧𝙨 𝙖𝙣𝙙 𝙡𝙚𝙖𝙫𝙚𝙨 𝙛𝙧𝙤𝙢 𝙢𝙮 𝙥𝙧𝙞𝙫𝙖𝙩𝙚 𝙣𝙚𝙩𝙬𝙤𝙧𝙠!
+ 𝙛𝙤𝙧 𝙗𝙚𝙜𝙞𝙣𝙣𝙞𝙣𝙜, 𝙄'𝙡𝙡 𝙘𝙤𝙣𝙛𝙞𝙜𝙪𝙧𝙚 𝙉𝘼𝙏 𝙛𝙤𝙧 𝙩𝙝𝙚 𝘿𝙈𝙕 𝙖𝙣𝙙 𝙩𝙝𝙚 𝙤𝙩𝙝𝙚𝙧 𝙥𝙧𝙞𝙫𝙖𝙩𝙚 𝙣𝙚𝙩𝙬𝙤𝙧𝙠 𝙢𝙖𝙘𝙝𝙞𝙣𝙚𝙨. 》
  
- > AWS: Actions > Networking > Change source/destination checking > STOP (This will allow NAT)
- > sudo hostnamectl set-hostname control.inova.pt (Server Domain)
- > nano keypair.pem (Inside paste your private key that you used to connect to the machine)
- > sudo chmod 400 keypair.pem (Give Permissions to the key file)
+ ⇨ AWS: Actions > Networking > Change source/destination checking > STOP (This will allow NAT)
+ ⇨ sudo hostnamectl set-hostname control.inova.pt (Server Domain)
+ ⇨ nano keypair.pem (Inside paste your private key that you used to connect to the machine)
+ ⇨ sudo chmod 400 keypair.pem (Give Permissions to the key file)
  
- > sudo su - (Root user)
- > apt update && apt upgrade -y (Update system)
+ ⇨ sudo su - (Root user)
+ ⇨ apt update && apt upgrade -y (Update system)
  
- > apt install netfilter-persistant iptables-persistant
- > iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
- > iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 80,443 -j DNAT --to-destination 172.31.128.101 (Redirects the HTTP/HTTPS Traffic to DMZ) 
- > iptables -t nat -L -nv (Check)
- > netfilter-persistant save (Save Configurations)
- > nano /etc/sysctl.conf
+ ⇨ apt install netfilter-persistant iptables-persistant
+ ⇨ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+ ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 80,443 -j DNAT --to-destination 172.31.128.101 (Redirects the HTTP/HTTPS Traffic to DMZ) 
+ ⇨ iptables -t nat -L -nv (Check)
+ ⇨ netfilter-persistant save (Save Configurations)
+ ⇨ nano /etc/sysctl.conf
    > Uncomment # net.ipv4.ip_forward=1
- > sysctl -p (If the awnser is 1, then your good to go)
- > ip a (Copy MAC Address from your eth2, thats the 2 network interface that you attached to your router.)
- > nano /etc/netplan/50-cloud-init.yaml
-   > Copy eth1 block;
-   ![alt text](https://i.imgur.com/qszByY4.png)
+ 
+ ⇨ sysctl -p (If the awnser is 1, then your good to go)
+ ⇨ ip a (Copy MAC Address from your eth2, thats the 2 network interface that you attached to your router.)
+ ⇨ nano /etc/netplan/50-cloud-init.yaml
+   > Copy eth1 block in your netplan (should look like this)
+   eth1:
+            dhcp4: true
+            dhcp4-overrides:
+                route-metric: 200
+            dhcp6: false
+            match:
+                macaddress: 06:ae:39:d4:dc:df
+            set-name: eth1
+
+   ⇨ Change the eth1 to eth2, paste above "set-name: eth1" the block that you have copied, Clear the Mac Adress and paste the one from eth2 (Should Look like this)
+   eth2:
+            dhcp4: true
+            dhcp4-overrides:
+                route-metric: 200
+            dhcp6: false
+            match:
+                macaddress: (eth2 mac adress here from ip a)
+            set-name: eth2 
+            
+ ------------------------------------------------------------------
+ ❗❗ Next Part on S111-Project/Debian/www.inova.pt (DMZ) (FOLDER) ❗❗ 
+ ------------------------------------------------------------------
+   
+    
+   
