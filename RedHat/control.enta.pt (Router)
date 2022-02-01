@@ -1,1 +1,12 @@
+『 ROUTER 』
 
+《 𝙊𝙣 𝙩𝙝𝙚 𝙧𝙤𝙪𝙩𝙚𝙧 𝙬𝙞𝙡𝙡 𝙗𝙚 𝙬𝙝𝙚𝙧𝙚 𝙖𝙡𝙡 𝙩𝙝𝙚 𝙞𝙣𝙛𝙤𝙧𝙢𝙖𝙩𝙞𝙤𝙣 𝙚𝙣𝙩𝙚𝙧𝙨 𝙖𝙣𝙙 𝙡𝙚𝙖𝙫𝙚𝙨 𝙛𝙧𝙤𝙢 𝙢𝙮 𝙥𝙧𝙞𝙫𝙖𝙩𝙚 𝙣𝙚𝙩𝙬𝙤𝙧𝙠!
+ 𝙛𝙤𝙧 𝙗𝙚𝙜𝙞𝙣𝙣𝙞𝙣𝙜, 𝙄'𝙡𝙡 𝙘𝙤𝙣𝙛𝙞𝙜𝙪𝙧𝙚 𝙉𝘼𝙏 𝙛𝙤𝙧 𝙩𝙝𝙚 𝘿𝙈𝙕 𝙖𝙣𝙙 𝙩𝙝𝙚 𝙤𝙩𝙝𝙚𝙧 𝙥𝙧𝙞𝙫𝙖𝙩𝙚 𝙣𝙚𝙩𝙬𝙤𝙧𝙠 𝙢𝙖𝙘𝙝𝙞𝙣𝙚𝙨. 》
+ 
+ ⇨ AWS: Actions > Networking > Change source/destination checking > STOP (This will allow NAT)
+ ⇨ sudo hostnamectl set-hostname control.enta.pt (Server Domain)
+ ⇨ nano keypair.pem (Inside paste your private key that you used to connect to the machine)
+ ⇨ sudo chmod 400 keypair.pem (Give Permissions to the key file)
+ 
+ ⇨ sudo su - (Root user)
+ ⇨ yum upgrade -y (Update system)
