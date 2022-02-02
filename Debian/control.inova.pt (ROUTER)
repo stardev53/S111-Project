@@ -43,4 +43,89 @@
             set-name: eth2 
    
     
+    
+    
+    # INSTALLING EASY-RSA
+    ⇨ apt install easy-rsa
+    ⇨ cp -r /usr/share/easy-rsa/ /etc/
+    ⇨ cd /etc/easy-rsa/
+    ⇨ ./easyrsa init-pki
+    ⇨ ./easyrsa build-ca inova.pt subca
+    ⇨ cd /etc/easy-rsa/pki/reqs/
+    ⇨ cat ca.req (copy and paste on ec2 router, ( /pki/reqs/ )
+    ⇨ ./easyrsa build-server-full www.inova.pt nopass
+    
+    
+    
+    #CONFIGURING DNS
+    ⇨ apt install bind9
+    ⇨ cd /etc/bind/
+    ⇨ nano named.conf.options
+      #UNCOMMENT
+      forwarders {
+        8.8.8.8;
+      };
+    
+    ⇨ cp db.local db.inova.pt
+    ⇨ cp db.127 db.31.172
+    ⇨ mv db.inova.pt /var/lib/bind/
+    ⇨ mv db.31.172 /var/lib/bind/
+    ⇨ cd /var/lib/bind/
+    ⇨ nano db.inova.pt
+      #PASTE THIS FORWARDZONE
+      ;
+      ; BIND data file for local loopback interface
+      ;
+      $TTL    604800
+      @       IN      SOA     inova.pt. root.inova.pt. (
+                                    2         ; Serial
+                               604800         ; Refresh
+                                86400         ; Retry
+                              2419200         ; Expire
+                               604800 )       ; Negative Cache TTL
+      ;
+      @       IN      NS              inova.pt.
+      @       IN      A               172.31.128.100
+      @       IN      A               172.31.129.100
+      www     IN      CNAME           inova.pt.
+   
+   
+    ⇨ nano db.31.172
+      #PASDTR THID REVERSE ZONE
+      ;
+      ; BIND reverse data file for local loopback interface
+      ;
+      $TTL    604800
+      @       IN      SOA     inova.pt. root.inova.pt. (
+                                    1         ; Serial
+                               604800         ; Refresh
+                                86400         ; Retry
+                              2419200         ; Expire
+                               604800 )       ; Negative Cache TTL
+      ;
+      @               IN      NS      inova.pt.
+      100.128         IN      PTR     inova.pt.
+      100.128         IN      PTR     www.inova.pt.
+      100.129         IN      PTR     www.inova.pt.
+    
+    
+    ⇨ cd /etc/bind/
+    ⇨ nano named.conf.local 
+      #PASTE 
+      zone "inova.pt" {
+        type master;
+        file "/var/lib/bind/db.inova.pt";
+      };
+
+       zone "31.172.in-addr.arpa" {
+        type master;
+        file "/var/lib/bind/db.31.172";
+      };
+    
+    ⇨  systemctl restart bind9
+    ⇨ nslookup www.inova.pt IP
+    ⇨ dig www.inova.pt IP
+    ⇨
+    ⇨
+    ⇨
    
