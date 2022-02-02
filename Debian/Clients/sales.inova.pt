@@ -37,9 +37,21 @@
 ⇨ mount -t nfs 172.31.129.101:/mnt/raid5_homes /mnt/raid5_homes
 ⇨ cat /etc/mtab
 ⇨ Copy the line above paste here ( /etc/fstab ) and add ,nofail
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
+
+⇨ apt -y install nis
+  - NIS DOMAIN: inova.pt
+⇨ nano /etc/yp.conf
+  # ypserver ypserver.network.com
+  # add to the end: [domain name] [server] [NIS server's hostname]
+  domain inova.pt server inovasrv.inova.pt
+⇨ nano /etc/nsswitch.conf
+  - passwd: #add "nis" to the end
+  - group: #add "nis" to the end
+  - shadow: #add "nis" to the end
+  - hosts: #add "nis" to the end
+⇨ nano /etc/pam.d/common-session
+  - #add: session optional        pam_mkhomedir.so skel=/etc/skel umask=077
+⇨ systemctl restart nis
+⇨ if you are in root: login
+  - User that you have created early.
+  - Password.
