@@ -19,7 +19,19 @@
     ➣ net.ipv4.ip_forward = 1
  ⇨ sysctl -p /etc/sysctl.conf
  ⇨ service network restart
- ⇨
- ⇨
- ⇨
- ⇨
+ 
+ #This part easy-rsa will be installed.
+ ⇨ sudo amazon-linux-extras install epel
+ ⇨ yum install openvpn easy-rsa -y
+ ⇨ cp -r /usr/share/easy-rsa/ /etc/
+ ⇨ cd /etc/easy-rsa/3/
+ ⇨ nano vars (Copy vars.exemple from ubuntu easy-rsa)
+ ⇨ Edit Certs Infos
+ ⇨ nano openssl-easyrsa.cnf (COMMENT #RANDLIFE)
+ ⇨ ./easyrsa build ca www.enta.pt (create ca)
+ ⇨ cd pki/reqs/
+ ⇨ nano ca.req (paste req from the inova server)
+ ⇨ ./easyrsa sign-req ca ca
+ ⇨ cd /etc/easy-rsa/3/pki/issued/
+ ⇨ cat cat.crt (copy and paste it on inova (/pki/)
+ ⇨ 
