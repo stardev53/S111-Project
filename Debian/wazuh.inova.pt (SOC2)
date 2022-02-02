@@ -22,3 +22,11 @@
 ⇨ netplan apply
 ⇨ ping 1.1.1.1 (If it ping, you have internet acess)
 ⇨ apt update && apt upgrade -y
+
+❗❗ After making DNS you can continue this step.
+
+⇨ nano /etc/netplan/50-cloud-init.yaml
+  #CHANGE 8.8.8.8 TO DNS IP (172.31.129.100)
+⇨ netplan try
+⇨ netplan apply
+⇨ nslookup www.inova.pt
