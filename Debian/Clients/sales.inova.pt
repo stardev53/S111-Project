@@ -28,3 +28,18 @@
 ⇨ netplan try
 ⇨ netplan apply
 ⇨ nslookup www.inova.pt
+
+##NFS && NIS SETUP
+
+⇨ apt update && apt -y upgrade && apt install nfs-common
+⇨ nano /etc/hosts ( 172.31.129.101 central.inova.pt inovasrv.inova.pt inova.pt )
+⇨ mkdir /mnt/raid5_homes
+⇨ mount -t nfs 172.31.129.101:/mnt/raid5_homes /mnt/raid5_homes
+⇨ cat /etc/mtab
+⇨ Copy the line above paste here ( /etc/fstab ) and add ,nofail
+⇨
+⇨
+⇨
+⇨
+⇨
+⇨
