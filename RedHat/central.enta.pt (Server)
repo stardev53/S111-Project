@@ -8,7 +8,7 @@
 ⇨ sudo su - (Root)
 
 ⇨ nano /etc/sysconfig/network-scripts/ifcfg-eth0
-  ➣ GATEWAY=172.31.151.100
+  ➣ GATEWAY=10.0.60.100
 ⇨ systemctl restart network
 ⇨ ping 1.1.1.1
 ⇨ yum update
