@@ -68,5 +68,28 @@
 ⇨ chown miguel:miguel /mnt/raid5_homes/miguel/.xsession 
 
 ⇨ (Go to Sales and Marketing Clients to configure nfs)
-⇨
-⇨
+
+
+⇨ apt -y install nis
+  - NIS DOMAIN: enta.pt
+⇨ nano /etc/default/nis
+  - NISSERVER=master
+⇨ nano /etc/ypserv.securenets
+  # This line gives access to everybody. PLEASE ADJUST! (change 0.0.0.0 / 0.0.0.0 to mask and private network)
+  255.255.255.0         172.31.0.0
+  # add to the end: IP range you allow to access
+  255.255.255.0         172.31.0.0
+⇨ nano /var/yp/Makefile
+  - MERGE_PASSWD=true
+  - MERGE_GROUP=true
+⇨ Update Database: /usr/lib/yp/ypinit -m
+  list, type a <control D>.
+    next host to add:  entasrv.enta.pt
+    next host to add:     # Ctrl+D key
+  The current list of NIS servers looks like this:
+⇨ systemctl restart nis
+⇨ after nis restart: (If you added users in local server, apply them to NIS database)
+  - cd /var/yp
+  - make
+
+⇨ (Go to Sales or Marketing client to continue NIS Configuration.)
