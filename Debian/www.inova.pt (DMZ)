@@ -62,14 +62,57 @@
 
 ##NGINX SETUP ##HTTP && HTTPS 
 
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
+⇨ apt install nginx
+⇨ apt install ssl-cert
+⇨ cd /etc/nginx/snippets/
+⇨ cp snakeoil.conf inova.conf
+⇨ nano inova.conf
+  > Change CA'S name
+⇨ cd ../sites-available/
+⇨ cp default secure
+⇨ nano secure
+  > Eleminate Lines with :80
+  > Uncomment lines with :443
+  > Uncommend snippets/snakeoil.conf;
+  > Change snakeoil.conf to inova.conf
+  >  change html to htmls;
+⇨  cd /var/www/
+⇨  cp -r html/ htmls
+⇨ cd html/
+  > index.nginx-debian.html
+⇨ cd htmls/
+  > index.nginx-debian.html
+⇨ cd /etc/nginx/sites-enabled/
+⇨ ln -s /etc/nginx/sites-available/secure secure
+⇨ systemctl restart nginx
+
+
+
+#CERTIFICATES TO HTTPS
+
+⇨  apt install easy-rsa
+⇨ cp -r /usr/share/easy-rsa/ /etc/
+⇨ cd /etc/easy-rsa/
+⇨ nano openssl-easyrsa.cnf
+  > Comment RANDFILE
+⇨  ./easyrsa init-pki
+⇨  ./easyrsa gen-req www.inova.pt nopass
+⇨  cd pki/reqs/
+⇨  cat www.inova.pt.req (copy)
+
+##Go to server to sign request!
+⇨  cd /etc/easy-rsa/3/pki/reqs
+⇨  nano www.inova.pt.req (PASTE HERE)
+⇨ cd ../..
+⇨ ./easyrsa sign-req server www.inova.pt
+⇨ cd pki/issued
+⇨ clear
+⇨ cat www.inova.pt.crt (COPY)
+
+#BACK TO DMZ
+⇨ cd ../private
+⇨ nano www.inova.pt.crt (PASTE HERE)
+⇨ Now CP .crt and .key to the destination folders!
+  > /etc/ssl/certs/www.inova.pt.crt;
+  > /etc/ssl/private/www.inova.pt.key;
+
