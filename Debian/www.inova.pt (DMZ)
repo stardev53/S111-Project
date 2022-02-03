@@ -30,3 +30,46 @@
 ⇨ netplan try
 ⇨ netplan apply
 ⇨ nslookup www.inova.pt
+
+##VSFTPD (FILEZILA) SETUP
+
+⇨ passwd ubuntu
+⇨ apt install vsftpd
+⇨ nano /etc/vsftpd.conf
+   > listen=NO to listen=YES
+   > listen_ipv6=YES to listen_ipv6=NO
+   > #write_enable=YES to write_enable=YES
+   > Change CA's Name (Default is snake oil) copy from router and paste here (dmz)
+   
+   #Add this in the end of documment (Impiclit FTP)
+   > pasv_enable=YES
+   > pasv_address=52.42.171.25 (change this to your public ip ftp)
+   > pasv_min_port=PORT1 (10000)
+   > pasv_max_port=PORT2 (10100)
+   > allow_anon_ssl=NO
+   > force_local_data_ssl=YES
+   > force_local_logins_ssl=YES
+   > ssl_tlsv1=YES
+   > ssl_sslv2=NO
+   > ssl_sslv3=NO
+   > require_ssl_reuse=NO
+   > ssl_ciphers=HIGH
+   > implicit_ssl=YES
+   > listen_port=990
+⇨ systemctl restart vsftpd
+⇨ Connect Via Filezilla to check Connection.
+
+
+##NGINX SETUP ##HTTP && HTTPS 
+
+⇨
+⇨
+⇨
+⇨
+⇨
+⇨
+⇨
+⇨
+⇨
+⇨
+⇨
