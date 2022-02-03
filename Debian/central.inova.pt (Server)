@@ -167,6 +167,10 @@
 ⇨ adduser dovecot sasl
 ⇨ systemctl restart saslauthd.service postfix dovecot
 
+⇨ adduser maria --home /mnt/homes/maria
+⇨ echo xfce4-session > /mnt/homes/maria/.xsession
+⇨ chown maria:maria /mnt/homes/maria/.xsession
+
 ⇨ ss -tulp | grep master
  #CONFIRM PORTS:
   > 25
