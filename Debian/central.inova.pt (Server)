@@ -90,9 +90,6 @@
     next host to add:     # Ctrl+D key
   The current list of NIS servers looks like this:
 ⇨ systemctl restart nis
-⇨ after nis restart: (If you added users in local server, apply them to NIS database)
-  - cd /var/yp
-  - make
 
 ⇨ (Go to Sales or Marketing client to continue NIS Configuration.)
 
@@ -167,9 +164,16 @@
 ⇨ adduser dovecot sasl
 ⇨ systemctl restart saslauthd.service postfix dovecot
 
+----------------------------------------------------------------------
+❗❗ You only create Users after installing NFS, NIS and Email Server ❗❗
 ⇨ adduser maria --home /mnt/homes/maria
 ⇨ echo xfce4-session > /mnt/homes/maria/.xsession
 ⇨ chown maria:maria /mnt/homes/maria/.xsession
+
+❗❗After Creating Users do this to update NIS DB
+⇨ cd /var/yp
+⇨ make
+⇨ systemctl restart nis
 
 ⇨ ss -tulp | grep master
  #CONFIRM PORTS:
