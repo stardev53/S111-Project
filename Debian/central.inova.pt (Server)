@@ -50,8 +50,10 @@
 ⇨ lsblk
 ⇨ cat /etc/mtab (Copy the last line)
 ⇨ nano /etc/fstab ( Paste lines with " ,nofail ")
-⇨ | When the Server reboot's, use mount -a to restore the raid 5 connection |
 
+⇨ When you reboot the server:
+  > cryptsetup luksOpen /dev/md0 md0_crypt (to open md0_crypt and vg)
+  > mount -a (to mount the folder to ride5)
 
 ##NIS && NFS
 ⇨ nano /etc/hosts ( 172.31.129.101 central.inova.pt inovasrv.inova.pt inova.pt )
