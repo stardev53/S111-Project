@@ -55,3 +55,14 @@
 ⇨ if you are in root: login
   - User that you have created early.
   - Password.
+
+
+##Graphic Interface 
+⇨ Leave root.
+⇨ sudo apt install -y xfce4 xfce4-goodies
+  - lightdm
+⇨ sudo apt install -y xrdp chromium-browser filezilla
+⇨ sudo adduser xrdp ssl-cert
+⇨ echo xfce4-session > ~/.xsession
+⇨ sudo reboot
+
