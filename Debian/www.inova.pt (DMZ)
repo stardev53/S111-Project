@@ -115,4 +115,13 @@
 ⇨ Now CP .crt and .key to the destination folders!
   > /etc/ssl/certs/www.inova.pt.crt;
   > /etc/ssl/private/www.inova.pt.key;
+  
+##EFS SETUP
+⇨ AWS:
+  ⇨Create File System;
+  ⇨ Name | Choose VPC | One ZOne| Choose Zone| 
+  ⇨ View Details
+  ⇨ Attach
+  ⇨ Mount Via IP
+  ⇨ Go to DMZ and Paste the command.
 
