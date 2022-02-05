@@ -8,6 +8,13 @@
 
 ⇨ sudo hostnamectl set-hostname wazuh.inova.pt (Set Wazuh Domain)
 ⇨ sudo su - (Root)
+
+#################################################
+##                                             ##
+##                    NAT                      ##
+##                                             ##
+#################################################
+
 ⇨ nano /etc/netplan/50-cloud-init.yaml
   > dhcp4-overrides:
         use-dns: false
@@ -30,6 +37,12 @@
 ⇨ netplan try
 ⇨ netplan apply
 ⇨ nslookup www.inova.pt
+
+#################################################
+##                                             ##
+##                   RAID 6                    ##
+##                                             ##
+#################################################
 
 ❗❗ Create 4 Disks at AWS Volumes and attach them to wazuh.inova.pt
 
