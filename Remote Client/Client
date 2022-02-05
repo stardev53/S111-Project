@@ -1,1 +1,25 @@
+『 𝑅𝐸𝑀𝒪𝒯𝐸 - 𝒞𝓁𝒾𝑒𝓃𝓉 』
 
+《 𝘛𝘩𝘪𝘴 𝘳𝘦𝘮𝘰𝘵𝘦 𝘤𝘭𝘪𝘦𝘯𝘵 𝘸𝘪𝘭𝘭 𝘣𝘦 𝘶𝘴𝘦𝘥 𝘵𝘰 𝘴𝘩𝘰𝘸 𝘵𝘩𝘢𝘵 𝘺𝘰𝘶 𝘤𝘢𝘯 𝘱𝘪𝘯𝘨 𝘢𝘯𝘺 𝘝𝘔 𝘸𝘪𝘵𝘩 𝘖𝘱𝘦𝘯𝘝𝘗𝘕, 𝘢𝘯𝘥 𝘶𝘴𝘪𝘯𝘨 𝘵𝘩𝘦 𝘛𝘦𝘭𝘦𝘱𝘰𝘳𝘵 》
+
+❗❗ This is the last thing you do in the OpenVPN SetUp, check if Site-to-Site is working 100%
+
+⇨ sudo hostnamectl set-hostname remote.client.pt (Set remote client domain)
+⇨ sudo su -
+⇨ apt update && apt upgrade -y
+
+##OPEN VPN SET UP
+
+⇨ apt install openvpn
+⇨ cd /etc/openvpn/
+⇨ cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf .
+⇨ nano cliente.conf
+  #CHANGE
+  ➣ my-server-1 >> Public IP From Server 1 (control.enta.pt)
+  ➣ Change CA's Name.
+⇨ systemctl disable openvpn
+⇨ systemctl stop openvpn
+
+
+❗❗ This is the last thing you enable, frist enable ENTA > INOVA and then The remote client!
+⇨ systemctl enable --now openvpn@client
