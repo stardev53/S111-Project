@@ -29,7 +29,12 @@
 ⇨ netplan apply
 ⇨ nslookup www.inova.pt
 
-##RAID 5 SETUP
+#################################################
+##                                             ##
+##                  RAID 5                     ##
+##                                             ##
+#################################################
+
 ##Create 3 Disks on AWS Volumes and Attach to central.inova.pt (1GB DISKS)
 
 ⇨  lsblk (check if the 3 disks are attached)
@@ -55,7 +60,12 @@
   > cryptsetup luksOpen /dev/md0 md0_crypt (to open md0_crypt and vg)
   > mount -a (to mount the folder to ride5)
 
-##NIS && NFS
+#################################################
+##                                             ##
+##                 NFS && NIS                  ##
+##                                             ##
+#################################################
+
 ⇨ nano /etc/hosts ( 172.31.129.101 central.inova.pt inovasrv.inova.pt inova.pt )
 ⇨ apt update && apt -y upgrade && apt install nfs-kernel-server
 ⇨ nano /etc/exports
@@ -95,7 +105,12 @@
 
 
 
-#EMAIL SERVER SETUP
+#################################################
+##                                             ##
+##                E-MAIL SERVER                ##
+##                                             ##
+#################################################
+
 ⇨ sudo hostnamectl set-hostname emailsrv.azores.pt
 ⇨ apt update && apt upgrade -y
 ⇨ sudo su -
