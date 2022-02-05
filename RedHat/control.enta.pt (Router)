@@ -20,7 +20,12 @@
  ⇨ sysctl -p /etc/sysctl.conf
  ⇨ service network restart
  
- #This part easy-rsa will be installed.
+#################################################
+##                                             ##
+##           EASY-RSA INSTALLATION             ##
+##                                             ##
+#################################################
+ 
  ⇨ sudo amazon-linux-extras install epel
  ⇨ yum install openvpn easy-rsa -y
  ⇨ cp -r /usr/share/easy-rsa/ /etc/
@@ -34,4 +39,34 @@
  ⇨ ./easyrsa sign-req ca ca
  ⇨ cd /etc/easy-rsa/3/pki/issued/
  ⇨ cat cat.crt (copy and paste it on inova (/pki/)
- ⇨ 
+ 
+ 
+#################################################
+##                                             ##
+##                OPENVPN SETUP                ##
+##                                             ##
+#################################################
+
+⇨ amazon-linux-extras install epel -y
+⇨ yum update -y
+⇨ yum install openvpn
+⇨ cd /etc/openvpn
+⇨ openvpn --genkey --secret ta.key
+⇨ openssl dhparam -out dh2048.pem 2048
+⇨ nano server_ss.conf
+  ##THE DAFAULT DOCCUMENT IS IN "OpenVPN Files/server_ss.conf" grab it and edit!
+⇨ nano server_ra.conf
+  ##THE DAFAULT DOCCUMENT IS IN "OpenVPN Files/server_ra.conf" grab it and edit!
+⇨ Copy from control.inova.pt the CA's that you have create to OPENVPN (vpn.enta.pt.crt | vpn.enta.pt.key | ca.crt) and paste inside openvpn folder.
+⇨ systemctl disable openvpn@server_ss
+⇨ systemctl stop openvpn@server_ss
+⇨ systemctl disable openvpn@server_ra
+⇨ systemctl stop openvpn@server_ra
+
+
+##Only activate this when the configuration site-to-site is done. ENTA > Inova > Remote Client (Orther to start)
+
+⇨ systemctl enable --now openvpn@server_ss
+⇨ systemctl enable --now openvpn@server_ra
+
+⇨ PING: 172.31.128.101 (INOVA:DMZ) 172.31.129.101(INOVA:CENTRAL) 172.31.129.102 (WAZUH:INOVA) 172.31.129.103 (INOVA:marketing) 172.31.129.104(INOVA:SALES)
