@@ -8,6 +8,13 @@
 
 ⇨ sudo hostnamectl set-hostname www.inova.pt (Set DMZ Domain)
 ⇨ sudo su - (Root)
+
+#################################################
+##                                             ##
+##                    NAT                      ##
+##                                             ##
+#################################################
+
 ⇨ nano /etc/netplan/50-cloud-init.yaml
   > dhcp4-overrides:
         use-dns: false
@@ -31,7 +38,11 @@
 ⇨ netplan apply
 ⇨ nslookup www.inova.pt
 
-##VSFTPD (FILEZILA) SETUP
+#################################################
+##                                             ##
+##                VSFTPD (SETUP)               ##
+##                                             ##
+#################################################
 
 ⇨ passwd ubuntu
 ⇨ apt install vsftpd
@@ -60,7 +71,11 @@
 ⇨ Connect Via Filezilla to check Connection.
 
 
-##NGINX SETUP ##HTTP && HTTPS 
+#################################################
+##                                             ##
+##           NGINX SETUP (HTTP/HTTPS)          ##
+##                                             ##
+#################################################
 
 ⇨ apt install nginx
 ⇨ apt install ssl-cert
@@ -88,7 +103,11 @@
 
 
 
-#CERTIFICATES TO HTTPS
+#################################################
+##                                             ##
+##                CERTS TO NGINS               ##
+##                                             ##
+#################################################
 
 ⇨  apt install easy-rsa
 ⇨ cp -r /usr/share/easy-rsa/ /etc/
@@ -116,7 +135,14 @@
   > /etc/ssl/certs/www.inova.pt.crt;
   > /etc/ssl/private/www.inova.pt.key;
   
-##EFS SETUP
+  
+  
+#################################################
+##                                             ##
+##                EFS SETUP                    ##
+##                                             ##
+#################################################
+
 ⇨ AWS:
   ⇨Create File System;
   ⇨ Name | Choose VPC | One ZOne| Choose Zone| 
