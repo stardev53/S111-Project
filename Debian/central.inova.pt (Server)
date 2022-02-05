@@ -72,12 +72,6 @@
   > /mnt/raid5_homes/ *(rw,sync,no_subtree_check,no_root_squash)
 ⇨ exportfs -a
 ⇨ systemctl enable --now nfs-kernel-server
-⇨ adduser maria --home /mnt/raid5_homes/maria
-⇨ echo xfce4-session > /mnt/raid5_homes/maria/.xsession
-⇨ chown maria:maria /mnt/raid5_homes/maria/.xsession
-⇨ adduser miguel --home /mnt/raid5_homes/miguel
-⇨ echo xfce4-session > /mnt/raid5_homes/miguel/.xsession
-⇨ chown miguel:miguel /mnt/raid5_homes/miguel/.xsession 
 
 ⇨ (Go to Sales and Marketing Clients to configure nfs)
 
