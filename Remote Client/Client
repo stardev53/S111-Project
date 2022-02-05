@@ -8,7 +8,11 @@
 ⇨ sudo su -
 ⇨ apt update && apt upgrade -y
 
-##OPEN VPN SET UP
+#################################################
+##                                             ##
+##                OPENVPN SETUP                ##
+##                                             ##
+#################################################
 
 ⇨ apt install openvpn
 ⇨ cd /etc/openvpn/
@@ -23,3 +27,10 @@
 
 ❗❗ This is the last thing you enable, frist enable ENTA > INOVA and then The remote client!
 ⇨ systemctl enable --now openvpn@client
+⇨ ip a (check Tunnel)
+⇨ PING: 
+  INOVA:
+  172.31.128.101 (INOVA:DMZ) 172.31.129.101(INOVA:CENTRAL) 172.31.129.102 (WAZUH:INOVA) 172.31.129.103 (INOVA:marketing) 172.31.129.104(INOVA:SALES)
+  
+  ENTA:
+  10.0.50.101 (ENTA:DMZ) 10.0.60.101 (ENTA:CENTRAL) 10.0.60.102 (WAZUH:ENTA) 10.0.60.103 (ENTA:SALES) 10.0.60.104 (INOVA:Marketing)
