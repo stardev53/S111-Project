@@ -27,14 +27,17 @@
 
 ➥ IPS Used in this Project:
   ➥ ENTA:
-     ➥ VPC: 10.0.0.0/24
+  
+       ➥ VPC: 10.0.0.0/24
         ➥ control.enta.pt: PUBLIC IP: 3.81.180.164 PRIVATE: 10.0.0.82 (Router) (This is the default one, didnt create a subnet for this)
         ➥ central.enta.pt: 10.0.60.101 (Server)
         ➥ www.enta.pt: 10.0.50.101 (DMZ)
         ➥ wazuh.enta.pt: 10.0.60.102 (WAZUH)
         ➥ sales.enta.pt: 10.0.60.103 (SALES:CLIENT)
-        ➥ marketing.enta.pt: 10.0.60.104 (MARKETING:CLIENT)  
-      ➥ VPC: 172.31.0.0/24 (Default VPC By AWS)
+        ➥ marketing.enta.pt: 10.0.60.104 (MARKETING:CLIENT)
+ ➥INOVA 
+ 
+       ➥ VPC: 172.31.0.0/24 (Default VPC By AWS)
         ➥ control.inova.pt: PUBLIC IP: 52.42.171.25 PRIVATE: 172.31.35.185 (Router) (This is the default one, didnt create a subnet for this)
         ➥ central.inova.pt: 172.31.129.101 (Server)
         ➥ www.inova.pt: 172.31.128.101 (DMZ)
