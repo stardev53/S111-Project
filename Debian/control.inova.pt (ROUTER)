@@ -11,6 +11,12 @@
  ⇨ sudo su - (Root user)
  ⇨ apt update && apt upgrade -y (Update system)
  
+#################################################
+##                                             ##
+##                     NAT                     ##
+##                                             ##
+#################################################
+ 
  ⇨ apt install netfilter-persistant iptables-persistant
  ⇨ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
  ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 80,443 -j DNAT --to-destination 172.31.128.101 (Redirects the HTTP/HTTPS Traffic to DMZ) 
@@ -48,7 +54,12 @@
     
     
     
-    # INSTALLING EASY-RSA
+#################################################
+##                                             ##
+##                 EASY-RSA                    ##
+##                                             ##
+#################################################
+
     ⇨ apt install easy-rsa
     ⇨ cp -r /usr/share/easy-rsa/ /etc/
     ⇨ cd /etc/easy-rsa/
@@ -60,7 +71,12 @@
     
     
     
-    #CONFIGURING DNS
+#################################################
+##                                             ##
+##                   DNS                       ##
+##                                             ##
+#################################################
+
     ⇨ apt install bind9
     ⇨ cd /etc/bind/
     ⇨ nano named.conf.options
@@ -130,9 +146,24 @@
     ⇨ dig www.inova.pt IP
     
     
-    ##OPENVPN SetUp
+#################################################
+##                                             ##
+##                OPENVPN SETUP                ##
+##                                             ##
+#################################################
     
-    ⇨
-    ⇨
-    ⇨
+    ⇨ apt install openvpn
+    ⇨ cd /etc/openvpn/
+    ⇨ nano server_ss.conf
+      ##THE DAFAULT DOCCUMENT IS IN "OpenVPN Files/server_ss.conf" grab it and edit!
+      
+    ⇨ systemctl disable openvpn@server_ss
+    ⇨ systemctl stop openvpn@server_ss
+    
+    ##Only activate this when the configuration site-to-site is done. ENTA > Inova > Remote Client (Orther to start)
+    ⇨ systemctl enable --now openvpn@server_ss
+    ⇨ ip a (Check Tunnel)
+    ⇨ PING: 10.0.50.101 (ENTA:DMZ) 10.0.60.101 (ENTA:CENTRAL) 10.0.60.102 (WAZUH:ENTA) 10.0.60.103 (ENTA:SALES) 10.0.60.104 (INOVA:Marketing)
+    
+    
    
