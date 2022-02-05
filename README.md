@@ -26,6 +26,7 @@
 ➤ 𝘋𝘦𝘣𝘪𝘢𝘯 𝘝𝘗𝘊: 172.31.0.0/24 / 𝘙𝘦𝘥 𝘏𝘢𝘵 𝘝𝘗𝘊: 10.0.0.0/24
 
 ➥ IPS Used in this Project:
+
   ➥ ENTA:
   
        ➥ VPC: 10.0.0.0/24
@@ -35,7 +36,7 @@
         ➥ wazuh.enta.pt: 10.0.60.102 (WAZUH)
         ➥ sales.enta.pt: 10.0.60.103 (SALES:CLIENT)
         ➥ marketing.enta.pt: 10.0.60.104 (MARKETING:CLIENT)
- ➥INOVA 
+ ➥ INOVA 
  
        ➥ VPC: 172.31.0.0/24 (Default VPC By AWS)
         ➥ control.inova.pt: PUBLIC IP: 52.42.171.25 PRIVATE: 172.31.35.185 (Router) (This is the default one, didnt create a subnet for this)
