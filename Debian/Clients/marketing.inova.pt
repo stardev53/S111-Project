@@ -29,7 +29,11 @@
 ⇨ netplan apply
 ⇨ nslookup www.inova.pt
 
-##NFS && NIS SETUP
+#################################################
+##                                             ##
+##                 NFS && NIS                  ##
+##                                             ##
+#################################################
 
 ⇨ apt update && apt -y upgrade && apt install nfs-common
 ⇨ nano /etc/hosts ( 172.31.129.101 central.inova.pt inovasrv.inova.pt inova.pt )
@@ -57,7 +61,12 @@
   - Password.
 
 
-##Graphic Interface 
+#################################################
+##                                             ##
+##              Graphic Interface              ##
+##                                             ##
+#################################################
+
 ⇨ Leave root.
 ⇨ sudo apt install -y xfce4 xfce4-goodies
   - lightdm
