@@ -74,3 +74,19 @@
 ⇨ systemctl restart httpd
 
 
+
+#################################################
+##                                             ##
+##                EFS SETUP                    ##
+##                                             ##
+#################################################
+
+⇨ AWS:
+  ⇨Create File System;
+  ⇨ Name | Choose VPC | One ZOne| Choose Zone| 
+  ⇨ View Details
+  ⇨ Attach
+  ⇨ Mount Via IP
+  ⇨ Go to DMZ and Paste the command.
+
+
