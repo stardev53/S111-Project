@@ -21,6 +21,8 @@
 #################################################
 
 ⇨ yum -y install nfs-utils
+⇨ nano /etc/hosts
+  add: 10.0.60.101 central.enta.pt entasrv.enta.pt enta.pt (to identify the host)
 ⇨ nano /etc/idmapd.conf
   #UNCOMMAND AND EDIT
   Domain = enta.pt
@@ -29,4 +31,6 @@
 ⇨ mkdir /var/homes
 ⇨ mount -t nfs  10.0.60.101:/var/homes /var/homes
 ⇨ ls -l /var/homes (Create a folder and check server)
+⇨ cat /etc/mtab (copy the line that you have mounted)
+⇨ nano /etc/fstab (paste here and add ,nofail, )
 
