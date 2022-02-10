@@ -38,7 +38,7 @@
 ⇨ apt update && apt -y upgrade && apt install nfs-common
 ⇨ nano /etc/hosts ( 172.31.129.101 central.inova.pt inovasrv.inova.pt inova.pt )
 ⇨ mkdir /var/homes
-⇨ mount -t nfs 172.31.129.101:/mnt/raid5_homes /var/homes
+⇨ mount -t nfs 172.31.129.101:/var/homes /var/homes
 ⇨ cat /etc/mtab
 ⇨ Copy the line above paste here ( /etc/fstab ) and add ,nofail
 
