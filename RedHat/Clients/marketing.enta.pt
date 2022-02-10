@@ -12,11 +12,21 @@
 ⇨ systemctl restart network
 ⇨ ping 1.1.1.1
 ⇨ yum update
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
+
+
+#################################################
+##                                             ##
+##                   NFS                       ##
+##                                             ##
+#################################################
+
+⇨ yum -y install nfs-utils
+⇨ nano /etc/idmapd.conf
+  #UNCOMMAND AND EDIT
+  Domain = enta.pt
+⇨ systemctl start rpcbind
+⇨ systemctl enable rpcbind
+⇨ mkdir /var/homes
+⇨ mount -t nfs  10.0.60.101:/var/homes /var/homes
+⇨ ls -l /var/homes (Create a folder and check server)
+
