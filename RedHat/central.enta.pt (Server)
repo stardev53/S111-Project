@@ -65,3 +65,25 @@
 ⇨ Go to the clients and configure NFS
 
 
+
+#################################################
+##                                             ##
+##                   NIS                       ##
+##                                             ##
+#################################################
+
+⇨ yum -y install ypserv rpcbind
+⇨ ypdomainname enta.pt
+⇨ echo "NISDOMAIN=enta.pt" >> /etc/sysconfig/network
+⇨ nano /var/yp/securenets
+  # add IP addresses you allow to access to NIS server
+  255.255.255.0       10.0.0.0
+  255.255.255.0       10.0.60.0
+⇨ systemctl start rpcbind ypserv ypxfrd yppasswdd
+⇨ systemctl enable rpcbind ypserv ypxfrd yppasswdd
+⇨ /usr/lib64/yp/ypinit -m
+⇨ cd /var/yp
+⇨ make
+
+
+
