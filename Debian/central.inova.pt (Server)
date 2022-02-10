@@ -50,8 +50,8 @@
 ⇨ vgcreate vg0 /dev/mapper/md0_crypt
 ⇨ lvcreate -n vg0lv0 -l +100%FREE vg0
 ⇨ mkfs.xfs /dev/vg0/vg0lv0
-⇨ mkdir /mnt/raid5_homes
-⇨ mount /dev/vg0/vg0lv0 /mnt/raid5_homes/
+⇨ mkdir /mnt/raid5_Storage
+⇨ mount /dev/vg0/vg0lv0 /mnt/raid5_Storage/
 ⇨ lsblk
 ⇨ cat /etc/mtab (Copy the last line)
 ⇨ nano /etc/fstab ( Paste lines with " ,nofail ")
@@ -69,7 +69,7 @@
 ⇨ nano /etc/hosts ( 172.31.129.101 central.inova.pt inovasrv.inova.pt inova.pt )
 ⇨ apt update && apt -y upgrade && apt install nfs-kernel-server
 ⇨ nano /etc/exports
-  > /mnt/raid5_homes/ *(rw,sync,no_subtree_check,no_root_squash)
+  > /var/homes/ *(rw,sync,no_subtree_check,no_root_squash)
 ⇨ exportfs -a
 ⇨ systemctl enable --now nfs-kernel-server
 
