@@ -34,3 +34,23 @@
 ⇨ cat /etc/mtab (copy the line that you have mounted)
 ⇨ nano /etc/fstab (paste here and add ,nofail, )
 
+
+
+#################################################
+##                                             ##
+##                   NIS                       ##
+##                                             ##
+#################################################
+
+⇨ yum -y install ypbind rpcbind
+⇨ ypdomainname enta.pt
+⇨ echo "NISDOMAIN=enta.pt" >> /etc/sysconfig/network
+⇨ authconfig \
+  > --enablenis \
+  > --nisdomain=enta.pt \
+  > --nisserver=enta.pt \
+  > --enablemkhomedir \
+  > --update
+⇨ systemctl start rpcbind ypbind
+⇨ systemctl enable rpcbind ypbind
+
