@@ -13,11 +13,48 @@
 ⇨ systemctl restart network
 ⇨ ping 1.1.1.1
 ⇨ yum update
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
+
+
+
+#################################################
+##                                             ##
+##                   WAZUH                     ##
+##                                             ##
+#################################################
+
+
+FOLLOW THIS SETPS TO INSTALL
+
+⇨ https://documentation.wazuh.com/current/installation-guide/open-distro/all-in-one-deployment/all-in-one.html
+
+
+
+#################################################
+##                                             ##
+##                  RAID 6                     ##
+##                                             ##
+#################################################
+
+##Create 4 Disks on AWS Volumes and Attach to central.inova.pt (1GB DISKS)
+
+⇨ gdisk /dev/xvdf         | o 》Y 》n 》ENTER 》ENTER 》ENTER 》 fd00 》w 》Y | 
+⇨ gdisk /dev/xvdg         | o 》Y 》n 》ENTER 》ENTER 》ENTER 》 fd00 》w 》Y | 
+⇨ gdisk /dev/xvdh         | o 》Y 》n 》ENTER 》ENTER 》ENTER 》 fd00 》w 》Y | 
+⇨ gdisk /dev/xvdi         | o 》Y 》n 》ENTER 》ENTER 》ENTER 》 fd00 》w 》Y | 
+⇨ lsblk
+⇨ mdadm --create /dev/md1 --level 6 --raid-device 4 gdisk /dev/xvdf1 /dev/xvdg1 /dev/xvdh1 /dev/xvdi1
+⇨ mdadm --detail /dev/md1
+⇨ pvcreate /dev/md1
+⇨ vgcreate vg1 /dev/md1
+⇨ lvcreate -n vg1lv0 -l +100%FREE vg1
+⇨ cryptsetup luksFormat --hash=sha512 --key-size=512 --cipher=aes-xts-plain64 --verify-passphrase /dev/vg1/vg1lv0 ( Super@Passw0rd )
+⇨ cryptsetup luksOpen /dev/vg1/vg1lv0 vg1lv0_crypt
+⇨ mkfs.xfs /dev/mapper/vg1lv0_crypt
+⇨ mkdir /mnt/raid6_STORAGE/
+⇨ mount /dev/mapper/vg1lv0_crypt /mnt/raid6_STORAGE/
+⇨ cat /etc/mtab 
+⇨ nano /etc/fstab ( Paste 2  lanes with ,nofail )
+
+##IN CASE OF A REBOOT
+⇨ cryptsetup luksOpen /dev/vg1/vg1lv0 vg1lv0_crypt
+⇨ mount -a
