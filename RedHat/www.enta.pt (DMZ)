@@ -14,11 +14,35 @@
 ⇨ systemctl restart network
 ⇨ ping 1.1.1.1
 ⇨ yum update
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
-⇨
+
+
+
+#################################################
+##                                             ##
+##                   ProFTPd                   ##
+##                                             ##
+#################################################
+
+#Instaling FTP Server
+
+⇨ sudo amazon-linux-extras install epel
+⇨ yum install proftpd
+⇨ (Import CA'S to /etc/ssl/certs/) ( .crt .key )
+⇨ nano /etc/proftpd.conf
+⇨ Add At the end of the file: PassivePorts 10000 10100
+⇨ Commend this lines:
+   # <IfDefine TLS>
+   #  <IfModule mod_tls_shmcache.c>
+   #    TLSSessionCache            shm:/file=/var/run/proftpd/sesscache
+   #  </IfModule>
+   #</IfDefine>
+
+#CHANGE UR CERTS TO THE ONES THAT YOU HAVE CREATED ON INOVA! (.crt .key) (for ftp ec2)
+⇨ TLSRSACertificateFile /etc/ssl/certs/ftpec2.enta.pt.crt
+⇨ TLSRSACertificateKeyFile /etc/ssl/private/ftpec2.enta.pt.key
+
+⇨ passwd ec2-user
+⇨ systemctl enable --now proftpd
+⇨ And now you can Connect via FTP
+
+
