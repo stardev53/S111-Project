@@ -46,3 +46,31 @@
 ⇨ And now you can Connect via FTP
 
 
+#################################################
+##                                             ##
+##                HTTPD (apache)               ##
+##                                             ##
+#################################################
+
+⇨ yum install httpd
+⇨ yum install mod_ssl
+⇨ ln -s /etc/pki/tls/private private
+⇨ Put CA'S HERE ( .crt .key ) ( /etc/ssl/certs/www.enta.pt.crt | /etc/ssl/private/www.enta.pt.key )
+⇨ cp -r /var/www/html /var/www/htmls
+⇨ nano /etc/httpd/conf.d/ssl.conf
+⇨ EDIT:
+  UNCOMMEND AND EDIT:
+  DocumentRoot "/var/www/htmls
+  ServerName www.enta.pt:443
+  
+  #COMMENT
+  #SSLProtocol all -SSLv3
+  #SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5:!SEED:!IDEA
+  
+  #Edit certificates
+  SSLCertificateFile /etc/ssl/certs/www.enta.pt.crt
+  SSLCertificateKeyFile /etc/ssl/private/www.enta.pt.key
+
+⇨ systemctl restart httpd
+
+
