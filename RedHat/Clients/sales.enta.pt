@@ -21,6 +21,8 @@
 #################################################
 
 ⇨ yum -y install nfs-utils
+⇨ nano /etc/hosts
+  add: 10.0.60.101 central.enta.pt entasrv.enta.pt enta.pt (to identify the host)
 ⇨ nano /etc/idmapd.conf
   #UNCOMMAND AND EDIT
   Domain = enta.pt
