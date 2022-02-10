@@ -31,3 +31,5 @@
 ⇨ mkdir /var/homes
 ⇨ mount -t nfs  10.0.60.101:/var/homes /var/homes
 ⇨ ls -l /var/homes (Create a folder and check server)
+⇨ cat /etc/mtab (copy the line that you have mounted)
+⇨ nano /etc/fstab (paste here and add ,nofail, )
