@@ -13,7 +13,8 @@
  ⇨ yum install iptables-services
  ⇨ systemctl enable --now iptables
  ⇨ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
- ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 21,22 -j DNAT --to-destination 10.0.50.101 (PROFTP TRAFFIC TO DMZ)
+ ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 21 -j DNAT --to-destination 10.0.50.101 (PROFTP TRAFFIC TO DMZ)
+  ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 990 -j DNAT --to-destination 10.0.50.101
  ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 10000:10100 -j DNAT --to-destination 10.0.50.101 (PROFTP TRAFFIC TO DMZ)
  ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 443 -j DNAT --to-destination 10.0.60.102 (WAZUH WEB PAGE TO CONFIG)
  ⇨
