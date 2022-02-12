@@ -17,8 +17,7 @@
   ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m multiport --dport 990 -j DNAT --to-destination 10.0.50.101
  ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 10000:10100 -j DNAT --to-destination 10.0.50.101 (PROFTP TRAFFIC TO DMZ)
  ⇨ iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 443 -j DNAT --to-destination 10.0.60.102 (WAZUH WEB PAGE TO CONFIG)
- ⇨
- ⇨
+ 
  ⇨ iptables -t nat -L -nv
  ⇨ service iptables save
  ⇨ nano /etc/sysctl.conf
@@ -76,3 +75,60 @@
 ⇨ systemctl enable --now openvpn@server_ra
 
 ⇨ PING: 172.31.128.101 (INOVA:DMZ) 172.31.129.101(INOVA:CENTRAL) 172.31.129.102 (WAZUH:INOVA) 172.31.129.103 (INOVA:marketing) 172.31.129.104(INOVA:SALES)
+
+
+#################################################
+##                                             ##
+##                    DNS                      ##
+##                                             ##
+#################################################
+
+⇨ yum install bind bind-utils
+⇨ systemctl enable --now named
+⇨ systemctl status named
+⇨ cp /etc/named.conf /etc/named.conf_$(date -Is)
+⇨ nano /etc/named.conf
+  #EDIT 
+  > listen (…) any;
+  > listen (…) any;
+  > dns(…)enable no;
+  > dns(…)tion no;
+  
+  #PASTE
+  zone "enta.pt" {
+     type master;
+  file "/var/named/db.enta.pt";
+};
+
+⇨ cd /var/named
+⇨ nano db.enta.pt
+  # PASTE AND EDIT THIS (FORWARD ZONE, DONT NEED REVERSE)
+  
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     enta.pt. root.enta.pt. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@          IN      NS              enta.pt.
+@          IN      A               10.0.0.191
+control    IN      A               10.0.0.191
+central    IN      A               10.0.60.101
+wazuh      IN      A               10.0.60.102
+sales      IN      A               10.0.60.103
+marketing  IN      A               10.0.60.104
+dmz        IN      A               10.0.50.101
+
+
+⇨ systemctl restart named
+⇨ nano /etc/sysconfig/network-scripts/ifcfg-eth0
+  #ADD THIS
+  DNS1=10.0.0.191 (this is the default ip from control.enta.pt)
+  
+⇨ systemctl restart network
+
