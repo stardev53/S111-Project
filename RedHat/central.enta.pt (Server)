@@ -9,6 +9,8 @@
 
 ⇨ nano /etc/sysconfig/network-scripts/ifcfg-eth0
   ➣ GATEWAY=10.0.60.100
+  ➣ DNS1=10.0.0.191
+  ➣ DNS2=8.8.8.8
 ⇨ systemctl restart network
 ⇨ ping 1.1.1.1
 ⇨ yum update
