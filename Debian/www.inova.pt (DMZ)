@@ -151,4 +151,6 @@
   ⇨ Attach
   ⇨ Mount Via IP
   ⇨ Go to DMZ and Paste the command.
+  ⇨ cat /etc/mtab (copy mount line)
+  ⇨ nano /etc/fstab ( Paste and add: ,nofail )
 
