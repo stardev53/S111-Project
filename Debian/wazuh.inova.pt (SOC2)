@@ -69,3 +69,12 @@
 ⇨ cryptsetup luksOpen /dev/vg1/vg1lv0 vg1lv0_crypt
 ⇨ mount -a
 
+
+#################################################
+##                                             ##
+##                   WAZUH                     ##
+##                                             ##
+#################################################
+
+⇨ Installation Guide: https://documentation.wazuh.com/current/installation-guide/open-distro/all-in-one-deployment/all-in-one.html
+
