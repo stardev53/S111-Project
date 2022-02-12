@@ -43,7 +43,7 @@
         ➥ central.inova.pt: 172.31.129.101 (Server)
         ➥ www.inova.pt: 172.31.128.101 (DMZ)
         ➥ wazuh.inova.pt: 172.31.129.102 (WAZUH)
-        ➥ sales.inova.pt: 172.31.129.103 (SALES:CLIENT)
-        ➥ marketing.inova.pt: 172.31.129.104 (MARKETING:CLIENT)
+        ➥ sales.inova.pt: 172.31.129.104 (SALES:CLIENT)
+        ➥ marketing.inova.pt: 172.31.129.103 (MARKETING:CLIENT)
 
 ⚠ 𝘛𝘩𝘪𝘴 𝘗𝘳𝘰𝘫𝘦𝘤𝘵 𝘪𝘯𝘤𝘭𝘶𝘥𝘦𝘴 2 𝘓𝘪𝘯𝘶𝘹 𝘥𝘪𝘴𝘵𝘳𝘪𝘣𝘶𝘵𝘪𝘰𝘯𝘴 𝘣𝘦𝘤𝘢𝘶𝘴𝘦 𝘪𝘯 𝘴𝘰𝘮𝘦 𝘱𝘢𝘤𝘬𝘢𝘨𝘦𝘴 𝘵𝘩𝘦 𝘤𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘢𝘵𝘪𝘰𝘯 𝘤𝘩𝘢𝘯𝘨𝘦𝘴 ⚠
