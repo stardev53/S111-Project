@@ -93,40 +93,24 @@
     ⇨ nano db.inova.pt
       #PASTE THIS FORWARDZONE
       ;
-      ; BIND data file for local loopback interface
-      ;
-      $TTL    604800
-      @       IN      SOA     inova.pt. root.inova.pt. (
-                                    2         ; Serial
-                               604800         ; Refresh
-                                86400         ; Retry
-                              2419200         ; Expire
-                               604800 )       ; Negative Cache TTL
-      ;
-      @       IN      NS              inova.pt.
-      @       IN      A               172.31.128.100
-      @       IN      A               172.31.129.100
-      www     IN      CNAME           inova.pt.
-   
-   
-    ⇨ nano db.31.172
-      #PASDTR THID REVERSE ZONE
-      ;
-      ; BIND reverse data file for local loopback interface
-      ;
-      $TTL    604800
-      @       IN      SOA     inova.pt. root.inova.pt. (
-                                    1         ; Serial
-                               604800         ; Refresh
-                                86400         ; Retry
-                              2419200         ; Expire
-                               604800 )       ; Negative Cache TTL
-      ;
-      @               IN      NS      inova.pt.
-      100.128         IN      PTR     inova.pt.
-      100.128         IN      PTR     www.inova.pt.
-      100.129         IN      PTR     www.inova.pt.
-    
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     inova.pt. root.inova.pt. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN      NS              inova.pt.
+@               IN      A               172.31.35.185
+control         IN      A               172.31.35.185
+central         IN      A               172.31.129.101
+wazuh           IN      A               172.31.129.102
+marketing       IN      A               172.31.129.103
+sales           IN      A               172.31.129.104
+dmz             IN      A               172.31.128.101
     
     ⇨ cd /etc/bind/
     ⇨ nano named.conf.local 
@@ -136,14 +120,9 @@
         file "/var/lib/bind/db.inova.pt";
       };
 
-       zone "31.172.in-addr.arpa" {
-        type master;
-        file "/var/lib/bind/db.31.172";
-      };
-    
     ⇨  systemctl restart bind9
-    ⇨ nslookup www.inova.pt IP
-    ⇨ dig www.inova.pt IP
+    ⇨ nslookup domain IP
+    ⇨ dig domain IP
     
     
 #################################################
