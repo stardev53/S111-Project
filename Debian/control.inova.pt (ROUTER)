@@ -148,4 +148,73 @@ dmz             IN      A               172.31.128.101
     ⇨ PING: 10.0.50.101 (ENTA:DMZ) 10.0.60.101 (ENTA:CENTRAL) 10.0.60.102 (WAZUH:ENTA) 10.0.60.103 (ENTA:SALES) 10.0.60.104 (INOVA:Marketing)
     
     
+    
+#################################################
+##                                             ##
+##               TELEPORT SETUP                ##
+##                                             ##
+#################################################
    
+#TELEPORT SERVER
+
+⇨ sudo curl https://deb.releases.teleport.dev/teleport-pubkey.asc \
+  > -o /usr/share/keyrings/teleport-archive-keyring.asc
+  
+⇨ cat<<EOF>/etc/apt/sources.list.d/teleport.list
+  > deb [signed-by=/usr/share/keyrings/teleport-archive-keyring.asc] https://deb.releases.teleport.dev/ stable main
+  > EQF
+  
+⇨ apt update
+⇨ apt install teleport
+
+⇨ Configure DNS for: tele.inova.pt
+⇨ dig tele.inova.pt @IP
+
+#EASY-RAS CERTIFICATES
+⇨ go to /etc/easy-rsa/
+⇨ ./easyrsa build-server-full tele.inova.pt nopass
+#END
+
+⇨ cd ~
+⇨ cat /etc/easy-rsa/pki/private/tele.inova.pt.key >> /var/lib/teleport/privkey.pem
+⇨ cat /etc/easy-rsa/pki/issued/tele.inova.pt.crt >> /var/lib/teleport/fullchain.pem
+⇨ apt install ssl-cert
+
+#UPDATING CA
+⇨ cd /usr/local/share/ca-certificates/
+⇨ cat /etc/easy-rsa/pki/ca.crt >> ca.crt
+⇨ update-ca-certificates
+
+#SETUP TELEPORT
+⇨ teleport configure -o file     --cluster-name=tele.inova.pt     --public-addr=tele.inova.pt:443     --cert-file=/var/lib/teleport/fullchain.pem     --key-file=/var/lib/teleport/privkey.pem
+⇨ It will generate a invite, copy and and go to marketing.inova.pt (To use browser)
+⇨ Setup your account, you must have google Authenticator
+
+⇨ Now on control terminal
+⇨ tctl tokens add --type=node --ttl=1h
+⇨ and after yoy installed teleport on agent, you can do the command he got here.
+
+⇨ Your done, Now lets add one agent.
+
+
+#GO TO SALES TERMINAL
+⇨ sudo curl https://deb.releases.teleport.dev/teleport-pubkey.asc \
+  > -o /usr/share/keyrings/teleport-archive-keyring.asc
+  
+⇨ cat<<EOF>/etc/apt/sources.list.d/teleport.list
+  > deb [signed-by=/usr/share/keyrings/teleport-archive-keyring.asc] https://deb.releases.teleport.dev/ stable main
+  > EOF
+  
+⇨ apt-get update
+⇨ apt-get install teleport
+
+⇨ cd /usr/local/share/ca-certificates/
+⇨ nano ca.crt (go to control and copy the ca.crt file and paste here)
+⇨ update-ca-certificates
+
+⇨ teleport start \
+> --roles=node \
+> --token=  \
+> --ca-pin=  \
+> --auth-server= 
+
