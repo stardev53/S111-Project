@@ -196,3 +196,19 @@
   > 143
   > 993
   > 995
+  
+
+#################################################
+##                                             ##
+##            Import CA to firefox             ##
+##                                             ##
+#################################################
+
+
+⇨ cd /var/homes/maria/Documments
+⇨ nano ca.crt (Copy CA.crt from control and paste here)
+
+⇨ cd /var/homes/miguel/Documments
+⇨ nano ca.crt (Copy CA.crt from control and paste here)
+
+⇨ Go to Your Browser (Marketing / sales clients) and import the ca.crt!
