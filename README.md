@@ -49,17 +49,32 @@
      ➨ wazuh.inova.pt (Wazuh and Raid 6)
      ➨ Sales/Marketing.inova.pt (Graphic Interface / NIS / NFS / Thunderbird / firefox )
    
-  ➨ Created 6 Machines for Ubuntu Side:
+  ➨ Created 6 Machines for Amazon-Linux Side:
   
-     ➨ Control.inova.pt ( VPN | SUBCA | DNS | NAT | FW | Teleport )
-     ➨ www.inova.pt ( FTP / HTTP / HTTPS / EFS ) 
-     ➨ central.inova.pt ( NIS / NFS / SMTP / POP3 / IMAP / RAID 5 )
-     ➨ wazuh.inova.pt (Wazuh and Raid 6)
-     ➨ Sales/Marketing.inova.pt (Graphic Interface / NIS / NFS / Thunderbird / firefox )
+     ➨ Control.enta.pt ( VPN | CA | DNS | NAT | FW )
+     ➨ www.enta.pt ( FTP / HTTP / HTTPS / EFS ) 
+     ➨ central.enta.pt ( RAID 5 )
+     ➨ wazuh.enta.pt (Wazuh and Raid 6)
+     ➨ Sales/Marketing.enta.pt (None)
 
 
 🚩 Description 🚩
 
 ☁️ Ubuntu Side ⇃
 
-➣ 
+➣ On Control.enta.pt (Router) starting by naming the machine and updating system.
+
+    After that did NAT (Configured IP Tables for Routing and Give Internet to Clients)
+    
+    Configured netplan for the second netowork interface (eth2)
+    
+    installed easy-rsa.
+    
+    Configured dns server, my dns ip is : 172.31.35.185 (All VM's in the network have this ip on NETPLAN)
+    
+    Configured OpenVPN, the main server vpn is on control.enta.pt (Amazon Linux)
+    
+    Teleport setup
+  
+  
+  
