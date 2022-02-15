@@ -73,11 +73,29 @@
   
 ➣ on central:
 
+    ☛ Configured netplan for dns and internet acess
     ☛ started by chaning hostname domain;
     ☛ configured netplan, adding the dns ip server from control and  gateway.
     ☛ configured raid 5 , nis and nfs
     ☛ central is the nis, nfs and email server!
     ☛ Imported ca.crt to the Documents folder from each user (maria and miguel)
     
-➣  
+➣ on wazuh server:
+ 
+    ☛ Installed wazuh server (soc2) and raid 6!
+
+➣ on dmz:
+ 
+    ☛ Configured netplan for dns and internet acess
+    ☛ Configured Ngins with HTTPS 
+    ☛ Installed FTP Server
+    ☛ Configured EFS System from aws.
+    
+➣ on Clients(Marketing/Sales):
+ 
+    ☛ Configured netplan for dns and internet acess
+    ☛ Configured Nis and NFS clients;
+    ☛ Installed a Graphic Interface;
+    
+    
   
