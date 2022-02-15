@@ -127,4 +127,9 @@
     ☛ Installed Nfs Client.
 
     
+    
+    
+Summing up, im more familiarized with debain base destributions linux then red hat.
+On Ubuntu evertying is done, working and running, on amazon-linux not everything is done,
+did my best for the time i had to do this project.
   
