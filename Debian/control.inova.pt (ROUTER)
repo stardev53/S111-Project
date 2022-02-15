@@ -71,6 +71,14 @@
     ⇨ cd /etc/easy-rsa/pki/reqs/
     ⇨ cat ca.req (copy and paste on ec2 router, ( /pki/reqs/ )
     ⇨ ./easyrsa build-server-full www.inova.pt nopass
+    ⇨ ./easyrsa build-server-full www.enta.pt nopass
+    ⇨ ./easyrsa build-client-full vpn.inova.pt nopass
+    ⇨ ./easyrsa build-server-full vpn.enta.pt nopass
+    ⇨ ./easyrsa build-client-full vpn.client.remote.pt nopass
+    ⇨ ./easyrsa build-server-full ftp.inova.pt nopass
+    ⇨ ./easyrsa build-server-full ftp.enta.pt nopass
+    ⇨ ./easyrsa build-server-full www.inova.pt nopass
+    ⇨ ./easyrsa build-server-full email.inova.pt nopass
     
     
     
