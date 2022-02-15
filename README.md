@@ -65,15 +65,10 @@
 ➣ On Control.enta.pt (Router) starting by naming the machine and updating system.
 
     After that did NAT (Configured IP Tables for Routing and Give Internet to Clients)
-    
-    Configured netplan for the second netowork interface (eth2)
-    
-    installed easy-rsa.
-    
-    Configured dns server, my dns ip is : 172.31.35.185 (All VM's in the network have this ip on NETPLAN)
-    
-    Configured OpenVPN, the main server vpn is on control.enta.pt (Amazon Linux)
-    
+    Configured netplan for the second netowork interface (eth2)    
+    installed easy-rsa.   
+    Configured dns server, my dns ip is : 172.31.35.185 (All VM's in the network have this ip on NETPLAN)    
+    Configured OpenVPN, the main server vpn is on control.enta.pt (Amazon Linux)   
     Teleport setup
   
   
