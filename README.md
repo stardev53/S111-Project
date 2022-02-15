@@ -40,6 +40,7 @@
 ☁️ AWS Side ⇃
 
 ➣ Started creating 1 VPC in each region (𝘶𝘴-𝘸𝘦𝘴𝘵-2 (ENTA Side) and 𝘶𝘴-𝘦𝘢𝘴𝘵-1(Inova Side)
+
   ➨ Created 6 Machines for Ubuntu Side:
   
      ➨ Control.inova.pt ( VPN | SUBCA | DNS | NAT | FW | Teleport )
@@ -55,6 +56,9 @@
      ➨ central.inova.pt ( NIS / NFS / SMTP / POP3 / IMAP / RAID 5 )
      ➨ wazuh.inova.pt (Wazuh and Raid 6)
      ➨ Sales/Marketing.inova.pt (Graphic Interface / NIS / NFS / Thunderbird / firefox )
+
+
+🚩 Description 🚩
 
 ☁️ Ubuntu Side ⇃
 
