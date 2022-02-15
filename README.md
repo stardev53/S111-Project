@@ -79,10 +79,11 @@
     ☛ configured raid 5 , nis and nfs
     ☛ central is the nis, nfs and email server!
     ☛ Imported ca.crt to the Documents folder from each user (maria and miguel)
+    ☛ Users are mounted in /var/homes
     
 ➣ on wazuh server:
  
-    ☛ Installed wazuh server (soc2) and raid 6!
+    ☛ Installed and configured the wazuh and deployed all agents on network (soc2) and raid 6!
 
 ➣ on dmz:
  
@@ -97,5 +98,33 @@
     ☛ Configured Nis and NFS clients;
     ☛ Installed a Graphic Interface;
     
+    
+☁️ Amazon-Linux Side ⇃
+
+➣ on control.enta.pt started configuring hostnamectl for machine domain;
+      
+    ☛ Configured IP Tables for NAT
+    ☛ Created a Certificate Authority Server, on inove it is subordinate!
+    ☛ OpenVPN Setup, this is the main vpn server!
+    ☛ Configured DNS Server for entire amazon-linux network
+    
+➣ central.enta.pt:
+  
+    ☛ Configured network-scripts folder to give internet acess and to give the dns ip server!
+    ☛ Raid 5 Setup
+    ☛ Nfs Server Setup
+    
+➣ on wazuh server:
+  
+    ☛ Configured network-scripts folder to give internet acess and to give the dns ip server!
+    ☛ Installed and configured the wazuh and deployed all agents on network
+    ☛ Nfs Server Setup
+    ☛ Raid 6 Setup!
+
+➣ Clients Marketing/Sales:
+  
+    ☛ Configured network-scripts folder to give internet acess and to give the dns ip server!
+    ☛ Installed Nfs Client.
+
     
   
