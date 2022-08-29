@@ -126,12 +126,4 @@
     ☛ Configured network-scripts folder to give internet acess and to give the dns ip server!
     ☛ Installed Nfs Client.
 
-    
-    
-    
-    
-Summing up, im more familiarized with debain base destributions linux then red hat.
-On Ubuntu evertying is done, working and running, on amazon-linux not everything is done,
-did my best for the time i had to do this project.
-The Configurations for each one of the computers is here, feel free to use!
   
